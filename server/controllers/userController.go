@@ -12,10 +12,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
-	"user-athentication-golang/database"
+	// "user-athentication-golang/database"
+	// "server/routes"
 
-	helper "user-athentication-golang/helpers"
-	"user-athentication-golang/models"
+	helper "server/helpers"
+	"server/models"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -23,7 +24,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var userCollection *mongo.Collection = database.OpenCollection(database.Client, "user")
+var userCollection *mongo.Collection = connections.OpenCollection(connections.Client, "user")
 var validate = validator.New()
 
 //HashPassword is used to encrypt the password before it is stored in the DB
