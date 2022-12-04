@@ -27,7 +27,7 @@ import (
 var userCollection *mongo.Collection = connections.OpenCollection(connections.Client, "user")
 var validate = validator.New()
 
-//HashPassword is used to encrypt the password before it is stored in the DB
+// HashPassword is used to encrypt the password before it is stored in the DB
 func HashPassword(password string) string {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
 	if err != nil {
@@ -51,7 +51,7 @@ func VerifyPassword(userPassword string, providedPassword string) (bool, string)
 	return check, msg
 }
 
-//CreateUser is the api used to tget a single user
+// CreateUser is the api used to tget a single user
 func SignUp() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
